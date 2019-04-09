@@ -1,0 +1,35 @@
+python flow --model cfg/yolo.cfg --load bin/yolov2.weights --demo seminariomk.mp4 --gpu 0.8 --saveVideo
+
+python flow --model cfg/yolo.cfg --load bin/yolov2.weights --threshold 0.1 --demo Recortado_electro_lleno.mp4 --gpu 0.8 --saveVideo
+
+python flow --model cfg/yolo.cfg --load bin/yolov2.weights --threshold 0.1 --demo Recortado_Cafeteria_llena_gris.mp4 --gpu 0.8 --saveVideo
+
+python flow --model cfg/yolo.cfg --load bin/yolov2.weights --demo Recortado_electro_lleno.mp4 --gpu 0.8 --saveVideo
+
+python flow --model cfg/yolo.cfg --load bin/yolov2.weights --demo camera --gpu 0.8
+python flow --model cfg/yolo.cfg --load bin/tiny-yolo-voc.weights --demo cafeteriamedia.mp4 --gpu 0.8 --saveVideo
+
+%%%%%%%%%%%%%%%%%%codigo para testear solo imagen
+python flow --imgdir sample_img/ --model cfg/yolo.cfg --load bin/yolov2.weights --threshold 0.05 --gpu 0.8
+
+
+Clase Person
+
+>python flow --model cfg/yolo.cfg --load bin/yolov2.weights --train --dataset "~/VOCdevkit/VOC2007/JPEGImages" --annotation "D:/Universidad/Trabajo de Grado/darkflow-master/VOCdevkit/VOC2007/Annotations" --gpu 0.8 --epoch 300
+
+
+
+python flow --model cfg/tiny-yolo-voc-1c.cfg --load bin/tiny-yolo-voc.weights --train --annotation new_model_data/annotations --dataset new_model_data/images --gpu 0.8 --epoch 300
+
+python network/YOLO_small_tf.py -fromfile "person.jgp" -tofile_img "persontrain.jpg"
+
+
+import cv2
+import numpy as np
+import time
+
+capture = cv2.VideoCapture(1)
+capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+capture.release
+cv2.destroyAllWindows()
